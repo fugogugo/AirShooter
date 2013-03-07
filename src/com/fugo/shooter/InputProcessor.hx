@@ -22,17 +22,6 @@ class InputProcessor extends Sprite
 		this.gameLogic = gameLogic;
 	}
 	
-	private static var getInstance():InputProcessor
-	{
-		if (instance == null) {
-			instanced = false;
-			instance = new InputProcessor();
-			instanced  = true;
-		}
-		addEventListener(Event.ADDED_TO_STAGE, init);
-		return instance;
-	}
-	
 	private function init(e:Event):Void
 	{
 		Lib.trace("key added");
