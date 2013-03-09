@@ -8,8 +8,8 @@
 	<!-- output -->
 	<app main="com.fugo.shooter.Main" file="AirShooter" path="bin" />
 	
-	<window background="#000000" fps="60" />
-	<window width="450" height="600" unless="mobile" />
+	<window background="#ffffff" fps="60" />
+	<window width="480" height="800" unless="mobile" />
 	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
 	
 	<!-- classpath, haxe libs -->

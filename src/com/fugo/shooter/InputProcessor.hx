@@ -20,6 +20,7 @@ class InputProcessor extends Sprite
 	{		
 		super();
 		this.gameLogic = gameLogic;
+		addEventListener(Event.ADDED_TO_STAGE, init);
 	}
 	
 	private function init(e:Event):Void
@@ -29,24 +30,32 @@ class InputProcessor extends Sprite
 		addEventListener(Event.REMOVED_FROM_STAGE, onRemove);
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+		parent.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 	}
 	
 	private function onRemove(e:Event):Void
 	{
 		stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+		parent.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		addEventListener(Event.ADDED_TO_STAGE, init);
+	}
+	
+	private function onMouseUp(e:MouseEvent):Void
+	{
+		Lib.trace("x:"+e.localX+",y:"+e.localY);
 	}
 	private function onKeyDown(e:KeyboardEvent):Void
 	{
-		
+		if (e.keyCode == Keyboard.SPACE) {
+			gameLogic.shooting = true;
+		}
 	}
-	var counter:Int = 0;
+	
 	private function onKeyUp(e:KeyboardEvent):Void
 	{
 		if (e.keyCode == Keyboard.SPACE) {
-			Lib.trace("space" + counter);
-			counter++;
+			gameLogic.shooting = false;
 		}
 	}
 }

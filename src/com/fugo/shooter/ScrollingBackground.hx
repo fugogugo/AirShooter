@@ -39,11 +39,11 @@ class ScrollingBackground extends Sprite
 		
 		if (background1.y > background1.height)
 		{
-			background1.y = background2.y - background2.height;
+			background1.y = background2.y - background1.height;
 		}
 		if (background2.y > background2.height)
 		{
-			background2.y = background1.y - background1.height;
+			background2.y = background1.y - background2.height;
 		}
 	}
 }

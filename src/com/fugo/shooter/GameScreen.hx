@@ -6,6 +6,7 @@ import haxe.io.Input;
 import nme.Assets;
 import nme.display.Bitmap;
 import nme.events.Event;
+import nme.geom.Rectangle;
 import nme.Lib;
 import nme.display.FPS;
 /**
@@ -24,7 +25,8 @@ class GameScreen extends Screen
 	private var input:InputProcessor;
 	public function new() 
 	{
-		super();
+		super(300,400);
+		this.scrollRect = new Rectangle(0, 0, screenWidth, screenHeight);
 		background = new ScrollingBackground();
 		addChild(background);
 		
@@ -34,7 +36,7 @@ class GameScreen extends Screen
 		
 		addChild(ship);
 		addChild(enemy);
-		input = InputProcessor.instance;
+		input = new InputProcessor(gameLogic);
 		addChild(input);
 		ship.x = gameLogic.player.x;
 		ship.y = gameLogic.player.y;

@@ -40,8 +40,8 @@ class Game extends Sprite
 		
 		var stageWidth:Float = cast(stage.stageWidth, Float);
 		var stageHeight:Float = cast(stage.stageHeight, Float);
-		var myscaleX:Float = stageWidth/desiredWidth;
-		var myscaleY:Float = stageHeight/ desiredHeight;
+		var myscaleX:Float = stage.stageWidth/desiredWidth;
+		var myscaleY:Float = stage.stageHeight/ desiredHeight;
 		
 		aspectRatio = 1;
 		Lib.trace("myscaleX:" + myscaleX);
@@ -75,12 +75,17 @@ class Game extends Sprite
 		if(screen != null)
 			removeChild(screen);
 		this.screen = newScreen;
-			
 		screen.scaleX = aspectRatio;
 		screen.scaleY = aspectRatio;
-		//screen.x = stage.stageWidth / 2 - screen.width / 2;
-		//screen.y = stage.stageHeight / 2 - screen.height / 2;
-		
 		addChild(newScreen);
+		screen.x = stage.stageWidth / 2 - screen.screenWidth / 2;
+		screen.y = stage.stageHeight / 2 - screen.screenHeight / 2;
+		Lib.trace("screen width:" + screen.screenWidth);
+		Lib.trace("screen height:" + screen.screenHeight);
+		Lib.trace("stage width:" + stage.stageWidth);
+		Lib.trace("stage height" + stage.stageHeight);
+		Lib.trace("screen x:" + screen.x);
+		Lib.trace("screen y:" + screen.y);
+
 	}
 }
